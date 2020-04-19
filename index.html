@@ -9,11 +9,12 @@
 		var td = document.createElement("td")
 		var tbody = document.getElementById("liuyanban")
 		var content = document.getElementById("content")
+		var textarea = document.createElement("textarea")
 		
 		td.append(content)
 		tr.append(td)
 		tbody.append(tr)
-		
+		this.insertbefore(
 		}
 	</script>
 </head>
@@ -44,7 +45,7 @@
 		<form action="#">
 			<fieldset>
 				<legend>留言</legend>
-				<textarea id="content"></textarea>
+				<input id="content" type="text">
 				<button onclick=liuyan();>提交</button>
 			</fieldset>
 		<form action="#">
