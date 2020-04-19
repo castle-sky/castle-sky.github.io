@@ -3,29 +3,52 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 	<title>帆船之家</title>
-	<script type="text/javascript">
-	if (typeof(Storage) == "undefined"){
-		alert("something bad happened.");
-	}
-	else{
-	alert("success!");
-	alert(localStorage[0]);
-	}
-	</script>
+	<script>
+		function liuyan() {
+		var tr = document.createElement("tr")
+		var td = document.createElement("td")
+		var tbody = document.getElementById("liuyanban")
+		var content = document.getElementById("content")
+		
+		tr.append(content)
+		td.append(tr)
+		tbody.append(td)
+		
+		}
 </head>
 
 <body>
-	<header><h1>欢迎来到帆船之家！</h1></header>
-        <nav><ul><li>留言板</li></ul></nav>
-        <article><h2>主题：<span>帆宝贝，生日快乐！</span></h2>
-        <table></table>
-        <form action=#>
-        <fieldset>
-        <legend>留言</legend>
-        <textarea></textarea>
-        <button>提交</button>
-        </fieldset>
-        </form>
+	<header>
+		<h1>欢迎来到帆船之家！</h1>
+	</header>
+		
+        <nav>
+		<ul>
+			<li>留言板</li>
+		</ul>
+	</nav>
+		
+        <article>
+		<h2>主题：<span>帆宝贝，生日快乐！</span></h2>
+		<table>
+			<thead>
+				<tr>
+					<td>留言内容</td>
+				</tr>
+			</thead>
+			<tbody id="liuyanban">
+				
+			</tbody>
+		</table>
+		<form action="#">
+			<fieldset>
+				<legend>留言</legend>
+				<textarea id="content"></textarea>
+				<button onclick=liuyan();>提交</button>
+			</fieldset>
+		</form>
+	</article>
+		
         <footer></footer>
 </body>
 </html>
