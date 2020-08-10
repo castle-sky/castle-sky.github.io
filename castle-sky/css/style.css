@@ -1,0 +1,84 @@
+html, body, header, nav, main, footer {
+	margin: 0 0;
+	padding: 0 0;
+}
+
+header {
+	min-width: 700px;
+	background-color: orange;
+}
+header > div, footer > div {
+	margin: 0 auto;
+	width: 500px;
+}
+header > div > p {
+	font-size: 2.5rem;
+	text-align: center;
+	margin: 0 0;
+	padding: 9px 0 8px 0;
+}
+
+nav {
+	min-width: 650px;
+	height: 40px;
+}
+nav > ul {
+	margin: 0 auto;
+	height: 40px;
+	width: 250px;
+	list-style-type: none;
+	font-size: 15px;
+}
+
+nav li {
+	display: inline-block;
+	margin: 8px 20px 0px 20px;
+}
+
+nav li:nth-child(1) {
+	margin-left:0px
+}
+
+nav a {
+	text-decoration: none;
+}
+
+main {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+}
+
+main > aside {
+	width: 300px;
+	margin-left: 20px;
+	display: flex;
+	flex-direction: row;
+	background-color: beige;
+}
+
+aside > div {
+	margin-left: 9px;
+}
+
+aside p {
+	margin-top: 0px;
+}
+
+main > article {
+	width: 100%;
+	min-width: 420px;
+	margin-right: 20px;
+}
+
+article > p {
+	margin-top: 0px;
+	margin-left: 9px;
+	font-size: 18px;
+	text-align: justify;
+}
+
+footer div{
+	text-align: center;
+	margin-top: 8px;
+}
