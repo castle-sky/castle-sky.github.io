@@ -35,6 +35,8 @@ class Vector {
 window.onload = function () {
 	var canvas = document.querySelector('#mainApp');
 	var toggleFullscreen = document.querySelector('#toggleFullscreen');
+	var canvasWidth = document.querySelector('#canvas-width');
+	var canvasHeight = document.querySelector('#canvas-height');
 
 	toggleFullscreen.addEventListener('click', function (e) {
 		if (document.fullscreenEnabled) {
@@ -53,6 +55,8 @@ window.onload = function () {
 	document.onfullscreenchange = function () {
 		canvas.width = window.innerWidth;
 		canvas.height = window.innerHeight;
+		canvasWidth.innerHTML = String(canvas.width);
+		canvasHeight.innerHTML = String(canvas.height);
 	}
 
 	var width = canvas.width = window.innerWidth;

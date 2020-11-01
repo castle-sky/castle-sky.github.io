@@ -23,3 +23,15 @@ span#toggleFullscreen {
 	top: 5px;
 	left: 5px;
 }
+
+div#information {
+	position: fixed;
+	z-index: 10000;
+	background-color: #fff;
+	color: #000;
+	border: 1px #000 solid;
+	padding: 3px 5px;
+
+	top: 30px;
+	left: 5px;
+}
