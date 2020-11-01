@@ -37,6 +37,8 @@ window.onload = function () {
 	var toggleFullscreen = document.querySelector('#toggleFullscreen');
 	var canvasWidth = document.querySelector('#canvas-width');
 	var canvasHeight = document.querySelector('#canvas-height');
+	canvasWidth.innerHTML = String(window.innerWidth);
+	canvasHeight.innerHTML = String(window.innerHeight);
 
 	toggleFullscreen.addEventListener('click', function (e) {
 		if (document.fullscreenEnabled) {
