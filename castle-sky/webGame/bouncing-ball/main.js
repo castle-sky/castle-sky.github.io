@@ -60,7 +60,7 @@ window.onload = function () {
 			canvas.height = window.innerHeight;
 			canvasWidth.innerHTML = String(canvas.width);
 			canvasHeight.innerHTML = String(canvas.height);	
-		}, 1000);
+		}, 100);
 	};
 
 	var width = canvas.width = window.innerWidth;
