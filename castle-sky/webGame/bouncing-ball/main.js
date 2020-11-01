@@ -55,11 +55,13 @@ window.onload = function () {
 	});
 
 	document.onfullscreenchange = function () {
-		canvas.width = window.innerWidth;
-		canvas.height = window.innerHeight;
-		canvasWidth.innerHTML = String(canvas.width);
-		canvasHeight.innerHTML = String(canvas.height);
-	}
+		setTimeout(function () {
+			canvas.width = window.innerWidth;
+			canvas.height = window.innerHeight;
+			canvasWidth.innerHTML = String(canvas.width);
+			canvasHeight.innerHTML = String(canvas.height);	
+		}, 1000);
+	};
 
 	var width = canvas.width = window.innerWidth;
 	var height = canvas.height = window.innerHeight;
