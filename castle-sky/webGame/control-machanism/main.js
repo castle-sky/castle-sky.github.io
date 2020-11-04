@@ -13,16 +13,16 @@ window.onload = function () {
 	document.addEventListener('touchend', handler);
 
 	function handler(e) {
-		var html = 'infromation about touchstart as follows: <br>';
+		/*var html = 'infromation about touchstart as follows: <br>';
 		for (let item in e) {
 			html += item + ': ' + e.item + '<br>';
 		}
-		placeHTML(information, html);
+		placeHTML(information, html);*/
 		
 		if (e.type == 'touchmove' && e.touches) {
-			playerX = e.touches[0].pageX - canvas.offsetLeft;
-			playerY = e.thouches[0].pageY - canvas.offsetTop;
-			html = 'player position: ' + playerX + ' ' + playerY;
+			var playerX = e.touches[0].pageX - canvas.offsetLeft;
+			var playerY = e.thouches[0].pageY - canvas.offsetTop;
+			var html = 'player position: ' + playerX + ' ' + playerY;
 			placeHTML(infromation, html);
 		}
 	}
