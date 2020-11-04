@@ -23,7 +23,7 @@ window.onload = function () {
 			var playerX = e.touches[0].pageX - canvas.offsetLeft;
 			var playerY = e.thouches[0].pageY - canvas.offsetTop;
 			var html = 'player position: ' + playerX + ' ' + playerY;
-			placeHTML(infromation, html);
+			placeHTML(information, html);
 		}
 	}
 }
