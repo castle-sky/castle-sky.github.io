@@ -1,0 +1,37 @@
+html, body {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+
+	background-color: #fff; /*background-color不会被继承*/
+	color: #000;			/*color会被继承*/
+
+	font-size: 10px;
+	font-family: sans-serif;
+}
+
+span#fullscreen {
+	position: absolute;
+	top: 3px;
+	left: 3px;
+	z-index: 10000;
+	padding: 2px 3px;
+	border: 1px #000 solid;
+}
+
+span#information {
+	position: absolute;
+	top: 30px;
+	left: 3px;
+	z-index: 10000;
+	padding: 4px 6px;
+	border: 1px #000 solid;
+	display: block;;
+	width: 120px;
+}
+
+canvas#mainApp {
+	background-color: #75a8df;
+	width: 100%;
+	height: 100%;
+}
