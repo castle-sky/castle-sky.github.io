@@ -21,7 +21,7 @@ window.onload = function () {
 		
 		if (e.type == 'touchmove' && e.touches) {
 			var playerX = e.touches[0].pageX - canvas.offsetLeft;
-			var playerY = e.thouches[0].pageY - canvas.offsetTop;
+			var playerY = e.touches[0].pageY - canvas.offsetTop;
 			var html = 'player position: ' + playerX + ' ' + playerY;
 			placeHTML(information, html);
 		}
