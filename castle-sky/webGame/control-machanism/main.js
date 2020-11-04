@@ -8,9 +8,9 @@ window.onload = function () {
 	var fullscreen = document.querySelector('span#fullscreen');
 	var information = document.querySelector('span#information');
 
-	canvas.addEventListener('touchstart', handler);
-	canvas.addEventListener('touchmove', handler);
-	canvas.addEventListener('touchend', handler);
+	document.addEventListener('touchstart', handler);
+	document.addEventListener('touchmove', handler);
+	//document.addEventListener('touchend', handler);
 
 	function handler(e) {
 		var html = 'infromation about touchstart as follows: <br>';
