@@ -10,7 +10,7 @@ window.onload = function () {
 
 	document.addEventListener('touchstart', handler);
 	document.addEventListener('touchmove', handler);
-	//document.addEventListener('touchend', handler);
+	document.addEventListener('touchend', handler);
 
 	function handler(e) {
 		var html = 'infromation about touchstart as follows: <br>';
@@ -18,7 +18,8 @@ window.onload = function () {
 			html += item + ': ' + e.item + '<br>';
 		}
 		placeHTML(information, html);
-		if (e.touches) {
+		
+		if (e.type == 'touchmove' && e.touches) {
 			playerX = e.touches[0].pageX - canvas.offsetLeft;
 			playerY = e.thouches[0].pageY - canvas.offsetTop;
 			html = 'player position: ' + playerX + ' ' + playerY;
