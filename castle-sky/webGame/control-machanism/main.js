@@ -37,7 +37,7 @@ window.onload = function () {
 	var information = document.querySelector('span#information');
 
 	canvas.addEventListener('touchstart', handler);
-	//canvas.addEventListener('touchmove', handler);
+	canvas.addEventListener('touchmove', handler);
 	canvas.addEventListener('touchend', handler);
 
 	function handler(e) {
@@ -63,7 +63,7 @@ window.onload = function () {
 			var playerX = e.touches[0].pageX - canvas.offsetLeft;
 			var playerY = e.touches[0].pageY - canvas.offsetTop;
 			var html = 'player position: ' + playerX + ' ' + playerY;
-			placeHTML(information, html);
+			//placeHTML(information, html);
 		}
 	}
 }
