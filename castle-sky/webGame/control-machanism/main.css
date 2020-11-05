@@ -27,7 +27,9 @@ span#information {
 	padding: 4px 6px;
 	border: 1px #000 solid;
 	display: block;;
-	width: 120px;
+	width: 150px;
+	height: 150px;
+	overflow-y: scroll;
 }
 
 canvas#mainApp {
