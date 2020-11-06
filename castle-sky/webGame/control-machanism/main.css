@@ -10,13 +10,22 @@ html, body {
 	font-family: sans-serif;
 }
 
-span#fullscreen {
+span#fullscreen, span#clearInformation {
 	position: absolute;
-	top: 3px;
-	left: 3px;
 	z-index: 10000;
 	padding: 2px 3px;
 	border: 1px #000 solid;
+	cursor: pointer;
+}
+
+span#fullscreen {
+	top: 3px;
+	left: 3px;
+}
+
+span#clearInformation {
+	top: 3px;
+	left: 60px;
 }
 
 span#information {

@@ -35,10 +35,15 @@ window.onload = function () {
 	var canvas = document.querySelector('canvas#mainApp');
 	var fullscreen = document.querySelector('span#fullscreen');
 	var information = document.querySelector('span#information');
+	var clearInformation = document.querySelector('span#clearInformation');
 
-	canvas.addEventListener('touchstart', handler);
-	canvas.addEventListener('touchmove', handler);
-	canvas.addEventListener('touchend', handler);
+	clearInformation.addEventListener('click', function () {
+		information.innerHTML = '';
+	});
+
+	canvas.addEventListener('touchstart', handler, false);
+	canvas.addEventListener('touchmove', handler, false);
+	canvas.addEventListener('touchend', handler, false);
 
 	function handler(e) {
 		e.preventDefault();
@@ -46,24 +51,17 @@ window.onload = function () {
 		html += '<hr><hr>';
 		html += 'infromation about ' + e.type + ' as follows: <br>';
 		//html += iterateProp(e);
-		html += '<hr>';
+		html += '<hr>touches<br>';
 		html += iterateProp(e.touches);
-		html += '<hr>';
-		html += iterateProp(e.touches[0]);
-		html += '<hr>';
+		html += '<br>' + iterateProp(e.touches[0]);
+		html += '<hr>targetTouches<br>';
 		html += iterateProp(e.targetTouches);
-		html += '<hr>';
+		html += '<br>' + iterateProp(e.targetTouches[0]);
+		html += '<hr>changedTouches<br>';
 		html += iterateProp(e.changedTouches);
-		html += '<hr>';
-		html += iterateProp(e.changedTouches[0]);
+		html += '<br>' + iterateProp(e.changedTouches[0]);
+		//html += '<hr>';
+		//html += iterateProp(e.changedTouches[0]);
 		placeHTML(information, html);
-
-		console.log(e.type);
-		if (e.type == 'touchmove') {
-			var playerX = e.touches[0].pageX - canvas.offsetLeft;
-			var playerY = e.touches[0].pageY - canvas.offsetTop;
-			var html = 'player position: ' + playerX + ' ' + playerY;
-			//placeHTML(information, html);
-		}
 	}
 }
