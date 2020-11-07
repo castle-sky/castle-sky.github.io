@@ -159,10 +159,9 @@ window.addEventListener('load', function () {
 				}
 				for (let i = 0; i < length; i++) {
 					ctx.beginPath();
-					ctx.arc(touches[i].pageX, touches[i].pageY, 40, 0, 2 * Math.PI, false);
+					ctx.arc(touches[i].pageX - canvas.offsetLeft, touches[i].pageY - canvas.offsetTop, 5, 0, 2 * Math.PI, false);
 					ctx.fillStyle = global.color;
 					ctx.fill();
-					console.log('start');
 				}
 				console.log(ongoingTouches);
 				break;
@@ -183,6 +182,7 @@ window.addEventListener('load', function () {
 
 	function moveHandler(e) {
 		e.preventDefault();
+		var touches = e.changedTouches;
 		switch (global.fingerMode) {
 			case 'none':
 				if (ongoingTouches.length > 0) {
@@ -190,6 +190,21 @@ window.addEventListener('load', function () {
 				}
 				return;
 			case 'single':
+				for (let i = 0, length = touches.length; i < length; i++) {
+					var idx = ongoingTouchIndexById(touches[i].identifier);
+
+					if (idx > -1) {
+						ctx.beginPath();
+						ctx.moveTo(ongoingTouches[idx].pageX - offsetLeft, ongoingTouches[idx] - offsetTop);
+						ctx.lineTo(touches[i].pageX - offsetLeft, touches[i].pageY - offsetTop);
+						ctx.fillStyle = global.color;
+						ctx.lineWidth = 5;
+						ctx.fill();
+
+						ongoingTouches.splice(idx, 1, copyTouch(touches));
+
+					}
+				}
 				console.log('single');
 				break;
 			case 'double':
@@ -202,6 +217,7 @@ window.addEventListener('load', function () {
 
 	function endHandler(e) {
 		e.preventDefault();
+		var touches = e.changedTouches;
 		switch (global.fingerMode) {
 			case 'none':
 				if (ongoingTouches.length > 0) {
@@ -209,6 +225,21 @@ window.addEventListener('load', function () {
 				}
 				return;
 			case 'single':
+				for (let i = 0, length = touches.length; i < length; i++) {
+					var idx = ongoingTouchIndexById(touches[i].identifier);
+
+					if (idx > -1) {
+						ctx.beginPath();
+						ctx.moveTo(ongoingTouches[idx].pageX - offsetLeft, ongoingTouches[idx] - offsetTop);
+						ctx.lineTo(touches[i].pageX - offsetLeft, touches[i].pageY - offsetTop);
+						ctx.arc(touches[i].pageX - canvas.offsetLeft, touches[i].pageY - canvas.offsetTop, 5, 0, 2 * Math.PI, false);
+						ctx.lineWidth = 5;
+						ctx.fillStyle = global.color;
+						ctx.fill();
+
+						ongoingTouches.splice(idx, 1);
+					}
+				}
 				console.log('single');
 				break;
 			case 'double':
@@ -217,6 +248,15 @@ window.addEventListener('load', function () {
 			case 'multiple':
 				console.log('multiple');
 		}
+	}
+
+	function ongoingTouchIndexById(idToFind) {
+		for (let i = 0; i < ongoingTouches.length; i++) {
+			if (idToFind == ongoingTouches[i].identifier) {
+				return i
+			}
+		}
+		return -1
 	}
 
 	function copyTouch({identifier, pageX, pageY}) {

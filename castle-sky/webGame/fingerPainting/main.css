@@ -3,3 +3,7 @@ span.currentColor, div.colorOptions span {
 	width: 20px;
 	height: 20px;
 }
+
+canvas {
+	border: 1px #000 solid;
+}
