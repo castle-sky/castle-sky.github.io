@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Finger Painting</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="main.css">
+		<script src="main.js"></script>
+	</head>
+	<body>
+		<div class="mainApp">
+			<div class="functionalZone">
+				<div class="function1">
+					<span class="fullscreen">全屏模式</span>
+				</div>
+				<div class="function2">
+					<p>当前手指模式： <span class="currentFingerMode">单指模式</span></p>
+				</div>
+				<div class="function3">
+					<span class="toggleFingerMode">切换手指模式<span class="fingerModeIcon">>></span></span>
+					<div class="fingerMode">
+						<input type="radio" name="fingerMode" value="none" id="none" >
+						<label for="none">禁用手指</label>
+						<input type="radio" name="fingerMode" value="single" id="single">
+						<label for="single">单指模式</label>
+						<input type="radio" name="fingerMode" value="double" id="double">
+						<label for="double">双指模式</label>
+						<input type="radio" name="fingerMode" value="multiple" id="multiple">
+						<label for="multiple">多指模式</label>
+					</div>
+				</div>
+				<div class="function4">
+					<p>当前颜色： <span class="currentColor" data-color='#f00'></span></p>
+				</div>
+				<div class="function5">
+					<span class="toggleColor">切换颜色<span class="colorIcon">>></span></span>
+					<div class="colorOptions">
+						<span data-color="#f00"></span>
+						<span data-color="#ff6000"></span>
+						<span data-color="#ffa700"></span>
+						<span data-color="#1e3c10"></span>
+						<span data-color="#102cc3"></span>
+						<span data-color="#9c10c3"></span>
+						<span data-color="#c3106c"></span>
+					</div>
+				</div>
+			</div>
+			<div class="paintingZone">
+				<canvas></canvas>
+			</div>
+		</div>
+	</body>
+</html>
