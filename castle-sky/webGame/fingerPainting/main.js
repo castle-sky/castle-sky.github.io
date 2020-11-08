@@ -195,7 +195,7 @@ window.addEventListener('load', function () {
 
 					if (idx > -1) {
 						ctx.beginPath();
-						ctx.moveTo(ongoingTouches[idx].pageX - canvas.offsetLeft, ongoingTouches[idx] - canvas.offsetTop);
+						ctx.moveTo(ongoingTouches[idx].pageX - canvas.offsetLeft, ongoingTouches[idx].pageY - canvas.offsetTop);
 						ctx.lineTo(touches[i].pageX - canvas.offsetLeft, touches[i].pageY - canvas.offsetTop);
 						ctx.fillStyle = global.color;
 						ctx.lineWidth = 5;
