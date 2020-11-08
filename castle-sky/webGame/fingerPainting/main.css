@@ -1,9 +1,54 @@
+* {
+	padding: 0px;
+	margin: 0px;
+}
+
+div.mainApp {
+	width:96%;
+	margin: 0 auto;
+}
+
 span.currentColor, div.colorOptions span {
 	display: inline-block;
 	width: 20px;
 	height: 20px;
 }
+div.colorOptions span.moreColor {
+	width: auto;
+	padding: 2px 4px;
+	border: 1px #000 solid;
+	line-height: 20px;
+}
+
+span.currentLineWidth, div.lineWidthOptions span {
+	display: inline-block;
+	padding: 2px 4px;
+	border: 1px #000 solid;
+}
+
+span.warning {
+	display: none;
+	color: red;
+	font-size: 70%;
+}
 
 canvas {
 	border: 1px #000 solid;
+}
+
+div.function2, div.function3, div.function4 {
+	position: fixed;
+	left: 0px;
+}
+
+div.function2 {
+	bottom: 0px;
+}
+
+div.function3 {
+	bottom: 40px;
+}
+
+div.function4 {
+	bottom: 100px;
 }

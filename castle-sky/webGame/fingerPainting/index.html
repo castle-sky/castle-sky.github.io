@@ -13,10 +13,10 @@
 				<div class="function1">
 					<span class="fullscreen">全屏模式</span>
 				</div>
+
 				<div class="function2">
 					<p>当前手指模式： <span class="currentFingerMode">单指模式</span></p>
-				</div>
-				<div class="function3">
+
 					<span class="toggleFingerMode">切换手指模式<span class="fingerModeIcon">>></span></span>
 					<div class="fingerMode">
 						<input type="radio" name="fingerMode" value="none" id="none" >
@@ -29,10 +29,10 @@
 						<label for="multiple">多指模式</label>
 					</div>
 				</div>
-				<div class="function4">
+
+				<div class="function3">
 					<p>当前颜色： <span class="currentColor" data-color='#f00'></span></p>
-				</div>
-				<div class="function5">
+
 					<span class="toggleColor">切换颜色<span class="colorIcon">>></span></span>
 					<div class="colorOptions">
 						<span data-color="#f00"></span>
@@ -42,12 +42,47 @@
 						<span data-color="#102cc3"></span>
 						<span data-color="#9c10c3"></span>
 						<span data-color="#c3106c"></span>
+						<span data-color="" class="moreColor">更多颜色</span>
 					</div>
 				</div>
-				<div class="function6">
+				<div class="function4">
+					<p>当前规格： <span class="currentLineWidth" data-line-width='5'></span></p>
+
+
+					<span class="toggleLineWidth">切换粗细<span class="lineWidthIcon">>></span></span>
+					<div class="lineWidthOptions">
+						<span data-line-width="1">1</span>
+						<span data-line-width="2">2</span>
+						<span data-line-width="3">3</span>
+						<span data-line-width="4">4</span>
+						<span data-line-width="5">5</span>
+						<span data-line-width="6">6</span>
+						<span data-line-width="7">7</span>
+						<span data-line-width="more" class="moreLineWidth">更多规格</span>
+					</div>
+				</div>
+
+				<div class="function5">
 					<span class="clearCanvas">清除绘图区</span>
 				</div>
+
+				<div class="function6">
+					<p>设置绘图区大小</p>
+
+					<span class="warning">请输入正数!!!</span>
+
+					<div class="canvasWidth">
+						<label for="width">长：</label>
+						<input type="text" name="width" id="canvasWidth">
+					</div>
+					<div class="canvasHeight">
+						<label for="height">宽：</label>
+						<input type="text" name="height" id="canvasHeight">
+					</div>
+					<input type="button" name="confirm" value="确认" id="confirm">
+				</div>
 			</div>
+
 			<div class="paintingZone">
 				<canvas></canvas>
 			</div>
