@@ -168,7 +168,7 @@ window.addEventListener('load', function () {
 				break;
 			case 'double':
 				ongoingTouches.splice(2);
-				while (ongoingTouches.length < 2) {
+				while (length < touches.length && ongoingTouches.length < 2) {
 					ongoingTouches.push(copyTouch(Array.from(touches).shift()));
 					length++;
 				}
