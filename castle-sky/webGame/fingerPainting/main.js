@@ -1,22 +1,3 @@
-function isObject(obj) {
-	if (typeof obj == 'object') {
-		return true
-	}
-	return false
-}
-
-function iterateProp(obj) {
-	var result = '';
-	if (isObject(obj)) {
-		for (let item in obj) {
-			result += item + ': ' + obj[item] +'<br>';
-		}
-		return result
-	} else {
-		return typeof obj
-	}
-}
-
 window.global = {fingerMode: 'single',
 				 color: '#f00',
 				 fingerMap: {
@@ -59,7 +40,6 @@ window.addEventListener('load', function () {
 
 //功能2：手指模式
 window.addEventListener('load', function () {
-	var coverCanvas = document.querySelector('div.coverCanvas');
 	var currentFingerMode = document.querySelector('span.currentFingerMode');
 	var toggleFingerMode = document.querySelector('span.toggleFingerMode');
 	var fingerMode = document.querySelector('div.fingerMode');
@@ -84,11 +64,6 @@ window.addEventListener('load', function () {
 				if (inputs[item]['checked'] == true) {
 					currentFingerMode.innerHTML = global.fingerMap[inputs[item]['value']];
 					global.fingerMode = inputs[item]['value'];
-					if (global.fingerMode == 'none') {
-						coverCanvas.style.display = 'block';
-					} else {
-						coverCanvas.style.display = 'none';
-					}
 				}
 			}
 			
@@ -143,6 +118,7 @@ window.addEventListener('load', function () {
 	clearCanvas.addEventListener('click', function () {
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 	}, false);
+
 	canvas.addEventListener('touchstart', startHandler, false);
 	canvas.addEventListener('touchmove', moveHandler, false);
 	canvas.addEventListener('touchend', endHandler, false);
@@ -164,17 +140,7 @@ window.addEventListener('load', function () {
 				if (ongoingTouches.length < 1) {
 					ongoingTouches.push(copyTouch(touches[0]));
 					length = 1;
-				} else {
-					length = 0;
 				}
-				for (let i = 0; i < length; i++) {
-					ctx.beginPath();
-					ctx.arc(touches[i].pageX - canvas.offsetLeft, touches[i].pageY - canvas.offsetTop, 3, 0, 2 * Math.PI, false);
-					ctx.fillStyle = global.color;
-					ctx.fill();
-				}
-				console.log('start');
-				console.log(ongoingTouches);
 				break;
 			case 'double':
 				ongoingTouches.splice(2);
@@ -182,157 +148,58 @@ window.addEventListener('load', function () {
 					ongoingTouches.push(copyTouch(Array.from(touches).shift()));
 					length++;
 				}
-				for (let i = 0; i < length; i++) {
-					ctx.beginPath();
-					ctx.arc(touches[i].pageX - canvas.offsetLeft, touches[i].pageY - canvas.offsetTop, 3, 0, 2 * Math.PI, false);
-					ctx.fillStyle = global.color;
-					ctx.fill();
-				}
-				console.log('start');
-				console.log(ongoingTouches);
-				console.log(Array.from(touches));
 				break;
 			case 'multiple':
 				while (length < touches.length) {
 					ongoingTouches.push(copyTouch(Array.from(touches).shift()));
 					length++;
 				}
-				for (let i = 0; i < length; i++) {
-					ctx.beginPath();
-					ctx.arc(touches[i].pageX - canvas.offsetLeft, touches[i].pageY - canvas.offsetTop, 3, 0, 2 * Math.PI, false);
-					ctx.fillStyle = global.color;
-					ctx.fill();
-				}
-				console.log('start');
-				console.log(Array.from(touches));
-				console.log(ongoingTouches);
+		}
+
+		for (let i = 0; i < length; i++) {
+			ctx.beginPath();
+			ctx.arc(touches[i].pageX - canvas.offsetLeft, touches[i].pageY - canvas.offsetTop, 3, 0, 2 * Math.PI, false);
+			ctx.fillStyle = global.color;
+			ctx.fill();
 		}
 	}
 
 	function moveHandler(e) {
 		e.preventDefault();
 		var touches = e.changedTouches;
-		switch (global.fingerMode) {
-			case 'none':
-				if (ongoingTouches.length > 0) {
-					ongoingTouches = [];
-				}
-				return;
-			case 'single':
-				for (let i = 0, length = touches.length; i < length; i++) {
-					var idx = ongoingTouchIndexById(touches[i].identifier);
 
-					if (idx > -1) {
-						ctx.beginPath();
-						ctx.moveTo(ongoingTouches[idx].pageX - canvas.offsetLeft, ongoingTouches[idx].pageY - canvas.offsetTop);
-						ctx.lineTo(touches[i].pageX - canvas.offsetLeft, touches[i].pageY - canvas.offsetTop);
-						ctx.strokeStyle = global.color;
-						ctx.lineWidth = 5;
-						ctx.lineCap = 'round';
-						ctx.stroke();
+		for (let i = 0, length = touches.length; i < length; i++) {
+			var idx = ongoingTouchIndexById(touches[i].identifier);
 
-						ongoingTouches.splice(idx, 1, copyTouch(touches[i]));
-					}
-				}
-				console.log('move');
-				console.log(ongoingTouches);
-				break;
-			case 'double':
-				for (let i = 0, length = touches.length; i < length; i++) {
-					var idx = ongoingTouchIndexById(touches[i].identifier);
+			if (idx > -1) {
+				ctx.beginPath();
+				ctx.moveTo(ongoingTouches[idx].pageX - canvas.offsetLeft, ongoingTouches[idx].pageY - canvas.offsetTop);
+				ctx.lineTo(touches[i].pageX - canvas.offsetLeft, touches[i].pageY - canvas.offsetTop);
+				ctx.strokeStyle = global.color;
+				ctx.lineWidth = 5;
+				ctx.lineCap = 'round';
+				ctx.stroke();
 
-					if (idx > -1) {
-						ctx.beginPath();
-						ctx.moveTo(ongoingTouches[idx].pageX - canvas.offsetLeft, ongoingTouches[idx].pageY - canvas.offsetTop);
-						ctx.lineTo(touches[i].pageX - canvas.offsetLeft, touches[i].pageY - canvas.offsetTop);
-						ctx.strokeStyle = global.color;
-						ctx.lineWidth = 5;
-						ctx.lineCap = 'round';
-						ctx.stroke();
-
-						ongoingTouches.splice(idx, 1, copyTouch(touches[i]));
-					}
-				}
-				console.log('move');
-				console.log(ongoingTouches);
-				break;
-			case 'multiple':
-				for (let i = 0, length = touches.length; i < length; i++) {
-					var idx = ongoingTouchIndexById(touches[i].identifier);
-
-					if (idx > -1) {
-						ctx.beginPath();
-						ctx.moveTo(ongoingTouches[idx].pageX - canvas.offsetLeft, ongoingTouches[idx].pageY - canvas.offsetTop);
-						ctx.lineTo(touches[i].pageX - canvas.offsetLeft, touches[i].pageY - canvas.offsetTop);
-						ctx.strokeStyle = global.color;
-						ctx.lineWidth = 5;
-						ctx.lineCap = 'round';
-						ctx.stroke();
-
-						ongoingTouches.splice(idx, 1, copyTouch(touches[i]));
-					}
-				}
-				console.log('move');
-				console.log(ongoingTouches);
+				ongoingTouches.splice(idx, 1, copyTouch(touches[i]));
+			}
 		}
 	}
 
 	function endHandler(e) {
 		e.preventDefault();
 		var touches = e.changedTouches;
-		switch (global.fingerMode) {
-			case 'none':
-				if (ongoingTouches.length > 0) {
-					ongoingTouches = [];
-				}
-				return;
-			case 'single':
-				for (let i = 0, length = touches.length; i < length; i++) {
-					var idx = ongoingTouchIndexById(touches[i].identifier);
 
-					if (idx > -1) {
-						ctx.beginPath();
-						ctx.arc(touches[i].pageX - canvas.offsetLeft, touches[i].pageY - canvas.offsetTop, 3, 0, 2 * Math.PI, false);
-						ctx.fillStyle = global.color;
-						ctx.fill();
+		for (let i = 0, length = touches.length; i < length; i++) {
+			var idx = ongoingTouchIndexById(touches[i].identifier);
 
-						ongoingTouches.splice(idx, 1);
-					}
-				}
-				console.log('end');
-				console.log(ongoingTouches);
-				break;
-			case 'double':
-				for (let i = 0, length = touches.length; i < length; i++) {
-					var idx = ongoingTouchIndexById(touches[i].identifier);
+			if (idx > -1) {
+				ctx.beginPath();
+				ctx.arc(touches[i].pageX - canvas.offsetLeft, touches[i].pageY - canvas.offsetTop, 3, 0, 2 * Math.PI, false);
+				ctx.fillStyle = global.color;
+				ctx.fill();
 
-					if (idx > -1) {
-						ctx.beginPath();
-						ctx.arc(touches[i].pageX - canvas.offsetLeft, touches[i].pageY - canvas.offsetTop, 3, 0, 2 * Math.PI, false);
-						ctx.fillStyle = global.color;
-						ctx.fill();
-
-						ongoingTouches.splice(idx, 1);
-					}
-				}
-				console.log('end');
-				console.log(ongoingTouches);
-				break;
-			case 'multiple':
-				for (let i = 0, length = touches.length; i < length; i++) {
-					var idx = ongoingTouchIndexById(touches[i].identifier);
-
-					if (idx > -1) {
-						ctx.beginPath();
-						ctx.arc(touches[i].pageX - canvas.offsetLeft, touches[i].pageY - canvas.offsetTop, 3, 0, 2 * Math.PI, false);
-						ctx.fillStyle = global.color;
-						ctx.fill();
-
-						ongoingTouches.splice(idx, 1);
-					}
-				}
-				console.log('end');
-				console.log(ongoingTouches);
+				ongoingTouches.splice(idx, 1);
+			}
 		}
 	}
 
