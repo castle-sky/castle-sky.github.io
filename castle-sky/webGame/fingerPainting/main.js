@@ -124,7 +124,10 @@ window.addEventListener('load', function () {
 	canvas.addEventListener('touchend', endHandler, false);
 
 	function startHandler(e) {
-		e.preventDefault();
+		if (!(global.fingerMode == 'none')) {
+			e.preventDefault();			
+		}
+
 		var touches = e.changedTouches;
 		var length = 0;
 
@@ -165,7 +168,10 @@ window.addEventListener('load', function () {
 	}
 
 	function moveHandler(e) {
-		e.preventDefault();
+		if (!(global.fingerMode == 'none')) {
+			e.preventDefault();			
+		}
+
 		var touches = e.changedTouches;
 
 		for (let i = 0, length = touches.length; i < length; i++) {
@@ -186,7 +192,10 @@ window.addEventListener('load', function () {
 	}
 
 	function endHandler(e) {
-		e.preventDefault();
+		if (!(global.fingerMode == 'none')) {
+			e.preventDefault();			
+		}
+
 		var touches = e.changedTouches;
 
 		for (let i = 0, length = touches.length; i < length; i++) {
