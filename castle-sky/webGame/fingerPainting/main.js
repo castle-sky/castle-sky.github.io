@@ -195,7 +195,7 @@ window.addEventListener('load', function () {
 
 					if (idx > -1) {
 						ctx.beginPath();
-						ctx.moveTo(ongoingTouches[idx].pageX - offsetLeft, ongoingTouches[idx] - offsetTop);
+						ctx.moveTo(ongoingTouches[idx].pageX - canvas.offsetLeft, ongoingTouches[idx] - canvas.offsetTop);
 						ctx.lineTo(touches[i].pageX - offsetLeft, touches[i].pageY - offsetTop);
 						ctx.fillStyle = global.color;
 						ctx.lineWidth = 5;
@@ -230,7 +230,7 @@ window.addEventListener('load', function () {
 
 					if (idx > -1) {
 						ctx.beginPath();
-						ctx.moveTo(ongoingTouches[idx].pageX - offsetLeft, ongoingTouches[idx] - offsetTop);
+						ctx.moveTo(ongoingTouches[idx].pageX - canvas.offsetLeft, ongoingTouches[idx] - canvas.offsetTop);
 						ctx.lineTo(touches[i].pageX - offsetLeft, touches[i].pageY - offsetTop);
 						ctx.arc(touches[i].pageX - canvas.offsetLeft, touches[i].pageY - canvas.offsetTop, 5, 0, 2 * Math.PI, false);
 						ctx.lineWidth = 5;
