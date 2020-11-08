@@ -201,7 +201,7 @@ window.addEventListener('load', function () {
 						ctx.lineWidth = 5;
 						ctx.fill();
 
-						ongoingTouches.splice(idx, 1, copyTouch(touches));
+						ongoingTouches.splice(idx, 1, copyTouch(touches[i]));
 
 					}
 				}
