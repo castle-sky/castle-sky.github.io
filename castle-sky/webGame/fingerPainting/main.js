@@ -59,6 +59,7 @@ window.addEventListener('load', function () {
 
 //功能2：手指模式
 window.addEventListener('load', function () {
+	var coverCanvas = document.querySelector('div.coverCanvas');
 	var currentFingerMode = document.querySelector('span.currentFingerMode');
 	var toggleFingerMode = document.querySelector('span.toggleFingerMode');
 	var fingerMode = document.querySelector('div.fingerMode');
@@ -83,6 +84,11 @@ window.addEventListener('load', function () {
 				if (inputs[item]['checked'] == true) {
 					currentFingerMode.innerHTML = global.fingerMap[inputs[item]['value']];
 					global.fingerMode = inputs[item]['value'];
+					if (global.fingerMode == 'none') {
+						coverCanvas.style.display = 'block';
+					} else {
+						coverCanvas.style.display = 'none';
+					}
 				}
 			}
 			
@@ -129,10 +135,14 @@ window.addEventListener('load', function () {
 
 //canvas绘图代码
 window.addEventListener('load', function () {
+	var clearCanvas = document.querySelector('span.clearCanvas');
 	var canvas = document.querySelector('div.paintingZone canvas');
 	var ctx = canvas.getContext('2d');
 	var ongoingTouches = [];
 
+	clearCanvas.addEventListener('click', function () {
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
+	}, false);
 	canvas.addEventListener('touchstart', startHandler, false);
 	canvas.addEventListener('touchmove', moveHandler, false);
 	canvas.addEventListener('touchend', endHandler, false);
@@ -180,6 +190,7 @@ window.addEventListener('load', function () {
 				}
 				console.log('start');
 				console.log(ongoingTouches);
+				console.log(Array.from(touches));
 				break;
 			case 'multiple':
 				while (length < touches.length) {
@@ -193,6 +204,7 @@ window.addEventListener('load', function () {
 					ctx.fill();
 				}
 				console.log('start');
+				console.log(Array.from(touches));
 				console.log(ongoingTouches);
 		}
 	}
