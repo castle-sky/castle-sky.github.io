@@ -3,52 +3,50 @@
 	margin: 0px;
 }
 
+html, body {
+	font-family: serif;
+	color: #000;
+}
+
 div.mainApp {
 	width:96%;
 	margin: 0 auto;
+	position: relative;
 }
 
-span.currentColor, div.colorOptions span {
-	display: inline-block;
-	width: 20px;
-	height: 20px;
+div.paintingZone > canvas {
+	border: 1px #000 solid;
 }
-div.colorOptions span.moreColor {
+
+div.static {
+	border: 1px #000 solid;
+	padding: 3px 4px;
+	margin: 3px 0;
+}
+
+div.function6 > div {
+	margin: 4px 0;
+}
+
+div#absolute {
+	position: absolute;
+}
+
+div.absolute {
+	border: 1px #000 solid;
+	float: left;
+	padding: 3px 4px;
+	height: 30px;
+}
+
+span.currentColor, div.colorOptions > span {
+	display: inline-block;
+	width: 15px;
+	height: 14px;
+}
+
+div.colorOptions > span.moreColor {
 	width: auto;
 	padding: 2px 4px;
-	border: 1px #000 solid;
-	line-height: 20px;
-}
-
-span.currentLineWidth, div.lineWidthOptions span {
-	display: inline-block;
-	padding: 2px 4px;
-	border: 1px #000 solid;
-}
-
-span.warning {
-	display: none;
-	color: red;
-	font-size: 70%;
-}
-
-canvas {
-	border: 1px #000 solid;
-}
-
-div.function2, div.function3, div.function4 {
-	position: fixed;
-	left: 0px;
-}
-
-div.function2 {
-	bottom: 0px;
-}
-
-div.function3 {
-	bottom: 40px;
-}
-
-div.function4 {
-	bottom: 100px;
+	line-height: 14px;
 }

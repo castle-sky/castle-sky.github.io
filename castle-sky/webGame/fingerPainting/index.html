@@ -10,66 +10,22 @@
 	<body>
 		<div class="mainApp">
 			<div class="functionalZone">
-				<div class="function1">
+				<div class="function1 static">
 					<span class="fullscreen">全屏模式</span>
 				</div>
 
-				<div class="function2">
-					<p>当前手指模式： <span class="currentFingerMode">单指模式</span></p>
-
-					<span class="toggleFingerMode">切换手指模式<span class="fingerModeIcon">>></span></span>
-					<div class="fingerMode">
-						<input type="radio" name="fingerMode" value="none" id="none" >
-						<label for="none">禁用手指</label>
-						<input type="radio" name="fingerMode" value="single" id="single">
-						<label for="single">单指模式</label>
-						<input type="radio" name="fingerMode" value="double" id="double">
-						<label for="double">双指模式</label>
-						<input type="radio" name="fingerMode" value="multiple" id="multiple">
-						<label for="multiple">多指模式</label>
-					</div>
-				</div>
-
-				<div class="function3">
-					<p>当前颜色： <span class="currentColor" data-color='#f00'></span></p>
-
-					<span class="toggleColor">切换颜色<span class="colorIcon">>></span></span>
-					<div class="colorOptions">
-						<span data-color="#f00"></span>
-						<span data-color="#ff6000"></span>
-						<span data-color="#ffa700"></span>
-						<span data-color="#1e3c10"></span>
-						<span data-color="#102cc3"></span>
-						<span data-color="#9c10c3"></span>
-						<span data-color="#c3106c"></span>
-						<span data-color="" class="moreColor">更多颜色</span>
-					</div>
-				</div>
-				<div class="function4">
-					<p>当前规格： <span class="currentLineWidth" data-line-width='5'></span></p>
-
-
-					<span class="toggleLineWidth">切换粗细<span class="lineWidthIcon">>></span></span>
-					<div class="lineWidthOptions">
-						<span data-line-width="1">1</span>
-						<span data-line-width="2">2</span>
-						<span data-line-width="3">3</span>
-						<span data-line-width="4">4</span>
-						<span data-line-width="5">5</span>
-						<span data-line-width="6">6</span>
-						<span data-line-width="7">7</span>
-						<span data-line-width="more" class="moreLineWidth">更多规格</span>
-					</div>
-				</div>
-
-				<div class="function5">
+				<div class="function5 static">
 					<span class="clearCanvas">清除绘图区</span>
 				</div>
 
-				<div class="function6">
-					<p>设置绘图区大小</p>
+				<div class="function6 static">
+					<div>
+						<p>设置绘图区大小</p>				
+					</div>
 
-					<span class="warning">请输入正数!!!</span>
+					<div>
+						<span class="warning">请输入正数!!!</span>
+					</div>
 
 					<div class="canvasWidth">
 						<label for="width">长：</label>
@@ -79,7 +35,59 @@
 						<label for="height">宽：</label>
 						<input type="text" name="height" id="canvasHeight">
 					</div>
-					<input type="button" name="confirm" value="确认" id="confirm">
+					<div>
+						<input type="button" name="confirm" value="确认" id="confirm">
+					</div>
+				</div>
+
+				<div id="absolute">
+					<div class="function2 absolute">
+						<p>当前手指模式： <span class="currentFingerMode">单指模式</span></p>
+
+						<span class="toggleFingerMode">切换手指模式<span class="fingerModeIcon">>></span></span>
+						<div class="fingerMode">
+							<input type="radio" name="fingerMode" value="none" id="none" >
+							<label for="none">禁用手指</label>
+							<input type="radio" name="fingerMode" value="single" id="single">
+							<label for="single">单指模式</label>
+							<input type="radio" name="fingerMode" value="double" id="double">
+							<label for="double">双指模式</label>
+							<input type="radio" name="fingerMode" value="multiple" id="multiple">
+							<label for="multiple">多指模式</label>
+						</div>
+					</div>
+
+					<div class="function3 absolute">
+						<p>当前颜色： <span class="currentColor" data-color='#f00'></span></p>
+
+						<span class="toggleColor">切换颜色<span class="colorIcon">>></span></span>
+						<div class="colorOptions">
+							<span data-color="#f00"></span>
+							<span data-color="#ff6000"></span>
+							<span data-color="#ffa700"></span>
+							<span data-color="#1e3c10"></span>
+							<span data-color="#102cc3"></span>
+							<span data-color="#9c10c3"></span>
+							<span data-color="#c3106c"></span>
+							<span data-color="" class="moreColor">更多颜色</span>
+						</div>
+					</div>
+					<div class="function4 absolute">
+						<p>当前规格： <span class="currentLineWidth" data-line-width='5'></span></p>
+
+
+						<span class="toggleLineWidth">切换粗细<span class="lineWidthIcon">>></span></span>
+						<div class="lineWidthOptions">
+							<span data-line-width="1">1</span>
+							<span data-line-width="2">2</span>
+							<span data-line-width="3">3</span>
+							<span data-line-width="4">4</span>
+							<span data-line-width="5">5</span>
+							<span data-line-width="6">6</span>
+							<span data-line-width="7">7</span>
+							<span data-line-width="more" class="moreLineWidth">更多规格</span>
+						</div>
+					</div>
 				</div>
 			</div>
 

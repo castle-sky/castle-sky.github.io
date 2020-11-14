@@ -306,3 +306,7 @@ window.addEventListener('load', function () {
 	}
 
 }, false);
+
+window.addEventListener('resize', function () {
+	alert('i am resized');
+})
