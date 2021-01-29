@@ -71,8 +71,8 @@ html, body {
 span.currentColor,
 div.colorOptions > span {
 	display: inline-block;
-	width: 15px;
-	height: 14px;
+	width: 16%;
+	height: 10px;
 }
 
 div.colorOptions > span:last-child {
