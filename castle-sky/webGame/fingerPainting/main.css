@@ -1,0 +1,92 @@
+* {
+	padding: 0px;
+	margin: 0px;
+}
+
+html, body {
+	font-family: serif;
+	color: #000;
+}
+
+.ui-paint-layout {
+	width: 98%;
+	/*height: 1000px;*/
+
+	/*margin: 1em auto .8em;*/
+
+	position: relative;
+
+	border:1px solid #000;
+	border-radius: 2px;
+}
+
+.ui-setting-area {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+
+.ui-setting-tip {
+	position: relative;
+
+	width: 28px;
+	height: 28px;
+	box-sizing: border-box;
+}
+
+.ui-setting-tip-value:hover {
+	/*border:2px solid #a8c3d7;*/
+	cursor: pointer;
+}
+
+.ui-setting-option-area {
+	list-style: none;
+	border: 1px solid #000;
+	width: 100%;
+	padding: .2em .3em;
+}
+
+.ui-setting-option-area.showed,
+.popup.showed {
+	position: absolute;
+	top: 0;
+	left: calc(100% + 2px);
+}
+
+.ui-setting-tip > span,
+.ui-setting-tip > span > img,
+.ui-setting-option > span,
+.ui-setting-option > span > img{
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.popup {
+	width: max-content;
+	border: 1px solid #000;
+}
+
+
+span.currentColor,
+div.colorOptions > span {
+	display: inline-block;
+	width: 15px;
+	height: 14px;
+}
+
+div.colorOptions > span:last-child {
+	width: 35px;
+}
+
+
+
+
+
+.hidden {
+	display: none;
+}
+
+.ui-paint-aera {
+
+}
