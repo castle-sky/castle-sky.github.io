@@ -9,103 +9,89 @@
 	</head>
 	<body>
 		<div class="ui-paint-layout">
-			<div class="ui-setting-area">
-				<div class="ui-setting-tip">
-					<span class="ui-setting-tip-value"><img src="./image/tip-value.jpg" alt="" title="setting"></span>
-					<ul class="ui-setting-option-area hidden">
-						<li class="ui-setting-option fullscreen">
-							<span><img src="./image/tip-value.jpg" alt="" title="full screen"></span>
-						</li>
-						<li class="ui-setting-option clearall">
-							<span><img src="./image/tip-value.jpg" alt="" title="clear all"></span>
-						</li>
-						<li class="ui-setting-option">
-							<span class="option-tip"><img src="./image/tip-value.jpg" alt="" title="set area size"></span>
-							<div class="popup hidden">
-								<div>
-									<span class="warning">请输入正数!!!</span>
-								</div>
-
-								<div class="canvasWidth">
-									<label for="width">长：</label>
-									<input type="text" name="width" id="canvasWidth">
-								</div>
-								<div class="canvasHeight">
-									<label for="height">宽：</label>
-									<input type="text" name="height" id="canvasHeight">
-								</div>
-								<div>
-									<input type="button" name="confirm" value="确认" id="confirm">
-								</div>								
-							</div>
-						</li>
-						<li class="ui-setting-option">
-							<span class="option-tip"><img src="./image/tip-value.jpg" alt="" title="finger mode"></span>
-							<div class="popup hidden">
-								<p>当前手指模式： <span class="currentFingerMode">单指模式</span></p>
-
-								<span class="toggleFingerMode">切换:<span class="fingerModeIcon">>></span></span>
-								<div class="fingerMode">
-									<div>
-										<input type="radio" name="fingerMode" value="none" id="none" >
-										<label for="none">禁用手指</label>
-									</div>
-									<div>
-										<input type="radio" name="fingerMode" value="single" id="single">
-										<label for="single">单指模式</label>
-									</div>
-									<div>
-										<input type="radio" name="fingerMode" value="double" id="double">
-										<label for="double">双指模式</label>
-									</div>
-									<div>
-										<input type="radio" name="fingerMode" value="multiple" id="multiple">
-										<label for="multiple">多指模式</label>
-									</div>
-								</div>								
-							</div>
-						</li>
-						<li class="ui-setting-option">
-							<span class="option-tip"><img src="./image/tip-value.jpg" alt="" title="set color"></span>
-							<div class="popup hidden">
-								<p>当前颜色： <span class="currentColor" data-color='#f00'></span></p>
-
-								<span class="toggleColor">切换:<span class="colorIcon">>></span></span>
-								<div class="colorOptions">
-									<span data-color="#f00"></span>
-									<span data-color="#ff6000"></span>
-									<span data-color="#ffa700"></span>
-									<span data-color="#1e3c10"></span>
-									<span data-color="#102cc3"></span>
-<!-- 									<span data-color="#9c10c3"></span>
-									<span data-color="#c3106c"></span> -->
-									<span data-color="" class="moreColor">more</span>
-								</div>
-							</div>
-						</li>
-						<li class="ui-setting-option">
-							<span class="option-tip"><img src="./image/tip-value.jpg" alt="" title="set painter size"></span>
-							<div class="popup hidden">
-								<p>当前规格： <span class="currentLineWidth" data-line-width='5'></span></p>
-
-
-								<span class="toggleLineWidth">切换:<span class="lineWidthIcon">>></span></span>
-								<div class="lineWidthOptions">
-									<span data-line-width="1">1</span>
-									<span data-line-width="2">2</span>
-									<span data-line-width="3">3</span>
-<!-- 									<span data-line-width="4">4</span>
-									<span data-line-width="5">5</span>
-									<span data-line-width="6">6</span>
-									<span data-line-width="7">7</span> -->
-									<span data-line-width="more" class="moreLineWidth">more</span>
-								</div>
-							</div>
-						</li>
+			<div class="ui-paint-setting">
+				<div class="ui-setting-tip"><img src="./image/setting-tip.jpg" alt="setting" title="setting"></div>
+				<div class="ui-setting-area hidden">
+					<ul class="ui-setting-options">
+						<li class="ui-setting-option" data-popup="fullscreen"><img src="./image/setting-tip.jpg" alt="fullscreen" title="fullscreen"></li>
+						<li class="ui-setting-option" data-popup="clear-all"><img src="./image/setting-tip.jpg" alt="clear all" title="clear all"></li>
+						<li class="ui-setting-option" data-popup="finger-mode"><img src="./image/setting-tip.jpg" alt="finger mode" title="finger mode"></li>
+						<li class="ui-setting-option" data-popup="set-area-size"><img src="./image/setting-tip.jpg" alt="set area size" title="set area size"></li>
+						<li class="ui-setting-option" data-popup="set-color"><img src="./image/setting-tip.jpg" alt="set color" title="set color"></li>
+						<li class="ui-setting-option" data-popup="set-painter-size"><img src="./image/setting-tip.jpg" alt="set painter size" title="set painter size"></li>
+						<li class="ui-setting-option" data-popup="close-all"><img src="./image/setting-tip.jpg" alt="close all" title="close all"></li>
 					</ul>
+					<div id="finger-mode" class="ui-setting-function hidden">
+						<div class="popup">
+							<p>当前手指模式： <span class="currentFingerMode">单指模式</span></p>
+
+							<span class="toggleFingerMode">切换:<span class="fingerModeIcon">>></span></span>
+							<div class="fingerMode">
+									<input type="radio" name="fingerMode" value="none" id="none" >
+									<label for="none">禁用手指</label>
+
+									<input type="radio" name="fingerMode" value="single" id="single">
+									<label for="single">单指模式</label>
+
+									<input type="radio" name="fingerMode" value="double" id="double">
+									<label for="double">双指模式</label>
+
+									<input type="radio" name="fingerMode" value="multiple" id="multiple">
+									<label for="multiple">多指模式</label>
+							</div>								
+						</div>						
+					</div>
+					<div id="set-area-size" class="ui-setting-function hidden">
+						<div class="popup">
+							<div>
+								<span class="warning">请输入正数!!!</span>
+							</div>
+
+							<div class="canvasWidth">
+								<label for="width">长：</label>
+								<input type="text" name="width" id="width">
+							</div>
+							<div class="canvasHeight">
+								<label for="height">宽：</label>
+								<input type="text" name="height" id="height">
+							</div>
+							<div>
+								<input type="button" name="confirm" value="确认" id="confirm">
+							</div>								
+						</div>
+					</div>
+					<div id="set-color" class="ui-setting-function hidden">
+						<div class="popup">
+							<p>当前颜色： <span class="currentColor" data-color='#f00'></span></p>
+
+							<span class="toggleColor">切换:<span class="colorIcon">>></span></span>
+							<div class="colorOptions">
+								<span data-color="#f00"></span>
+								<span data-color="#ff6000"></span>
+								<span data-color="#ffa700"></span>
+								<span data-color="#1e3c10"></span>
+								<span data-color="#102cc3"></span>
+								<span data-color="#9c10c3"></span>
+								<span data-color="#c3106c"></span>
+								<span data-color="" class="moreColor"><input type="color" name="color"></span>
+							</div>
+						</div>						
+					</div>
+					<div id="set-painter-size" class="ui-setting-function hidden">
+						<div class="popup">
+							<p>当前规格： <span class="currentLineWidth" data-line-width='5'></span></p>
+
+							<span class="toggleLineWidth">切换:<span class="lineWidthIcon">>></span></span>
+							<div class="lineWidthOptions">
+								<span data-line-width="1">1</span>
+								<span data-line-width="2">2</span>
+								<span data-line-width="3">3</span>
+								<span data-line-width="more" class="moreLineWidth">more</span>
+							</div>
+						</div>						
+					</div>					
 				</div>
 			</div>
-
 			<div class="ui-paint-area">
 				<canvas></canvas>
 			</div>
