@@ -1,4 +1,8 @@
 * {
+	/*所有块级元素的width、height均继承自html*/
+	width: 100%;
+	height: 100%;
+
 	padding: 0px;
 	margin: 0px;
 }
@@ -8,85 +12,116 @@ html, body {
 	color: #000;
 }
 
+button,
+input,
+select,
+textarea {
+	width: initial;
+	height: initial;
+	padding: 0px;
+	margin: 0px;
+	box-sizing: border-box;
+	font-size: 100%;
+}
+
 .ui-paint-layout {
-	width: 98%;
-	/*height: 1000px;*/
-
-	/*margin: 1em auto .8em;*/
-
 	position: relative;
+}
 
+.ui-paint-layout img {
+	display: block;
+}
+
+.ui-paint-area > canvas {
+	display: block;
+
+	/*通过css设置的width和height得和canvas的属性width、height保持一致，
+	否则绘制的图形会变形*/
+	width: 98%;
+	height: 98%;
+	margin: 0 auto;
 	border:1px solid #000;
 	border-radius: 2px;
 }
 
-.ui-setting-area {
+.ui-paint-setting {
 	position: absolute;
-	top: 0px;
-	left: 0px;
-}
-
-.ui-setting-tip {
-	position: relative;
+	top: 0;
+	left: 0;
 
 	width: 28px;
 	height: 28px;
-	box-sizing: border-box;
+	font-size: 1em;
 }
 
-.ui-setting-tip-value:hover {
-	/*border:2px solid #a8c3d7;*/
-	cursor: pointer;
-}
-
-.ui-setting-option-area {
-	list-style: none;
-	border: 1px solid #000;
-	width: 100%;
-	padding: .2em .3em;
-}
-
-.ui-setting-option-area.showed,
-.popup.showed {
+.ui-setting-area {
 	position: absolute;
 	top: 0;
 	left: calc(100% + 2px);
-}
+	width: calc(600%);
+	height: max-content;
+	/*overflow-y: scroll;*/
 
-.ui-setting-tip > span,
-.ui-setting-tip > span > img,
-.ui-setting-option > span,
-.ui-setting-option > span > img{
-	display: block;
-	width: 100%;
-	height: 100%;
-}
-
-.popup {
-	width: max-content;
 	border: 1px solid #000;
+	border-radius: 2px;
 }
 
-
-span.currentColor,
-div.colorOptions > span {
-	display: inline-block;
-	width: 16%;
-	height: 10px;
-}
-
-div.colorOptions > span:last-child {
-	width: 35px;
-}
-
-
-
-
-
-.hidden {
+.ui-setting-area.hidden {
 	display: none;
 }
 
-.ui-paint-aera {
+.ui-setting-options {
+	list-style: none;
 
+	display: flex;
+
+	padding-bottom: 4px;
+	border-bottom: 1px solid #000;
+}
+
+.ui-setting-option {
+	display: inline-block;
+	margin-right: 2px;
+}
+
+.ui-setting-option:last-child {
+	margin-right: 0px;
+}
+
+/**/
+.ui-setting-function {
+	width: initial;
+	overflow-x: scroll;
+	padding: 2px 3px;
+	border-bottom: 1px solid #000;
+}
+
+.ui-setting-function.hidden {
+	display: none;
+}
+
+.ui-setting-function:last-child {
+	border-bottom-width: 0px;
+}
+
+/**/
+.popup {
+	width: max-content;
+}
+
+/**/
+.warning {
+	display: none;
+}
+
+.ui-setting-function span[data-color] {
+	display: inline-block;
+	width: 16%;
+	height: 7px;
+}
+
+.ui-setting-function input[type='color'] {
+	width: 100%;
+	height: 100%;
+	vertical-align: middle;
 }

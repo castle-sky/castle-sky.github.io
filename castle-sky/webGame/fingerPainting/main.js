@@ -9,40 +9,27 @@ window.global = {fingerMode: 'single',
 				 lineWidth: 5
 				};
 
-
-//功能1：全屏模式
-window.addEventListener('load', function () {
-	var fullscreen = document.querySelector('.fullscreen');
+//全屏、取消全屏
+window.addEventListener('load', function (event) {
+	var fullscreen = document.querySelector('li[data-popup="fullscreen"]');
 	var fullscreenImg = fullscreen.querySelector('img');
 
-	fullscreen.addEventListener('click', function () {
+	fullscreen.addEventListener('click', function (event) {
 		if (document.fullscreenEnabled) {
 			if (document.fullscreenElement) {
 				document.exitFullscreen();
-				fullscreenImg.setAttribute('title', 'full screen');
+				fullscreenImg.src = './image/setting-tip.jpg';
 			} else {
-				document.documentElement.requestFullscreen();
-				fullscreenImg.setAttribute('title', 'exit full screen');
+				document.documentElement.requestFullscreen()
+				fullscreenImg.src = './image/setting-tip.jpg';
 			}
 		} else {
-			fullscreenImg.setAttribute('title', '你的浏览器不支持全屏模式');
+			alert('你的浏览器不支持全屏模式！');
 		}
-	}, false);
-
-	document.addEventListener('fullscreenerror', function () {
-		var currentMode = '';
-		if (document.fullscreenElement) {
-			currentMode = '退出全屏';
-			fullscreen.innerHTML = '取消全屏';
-		} else {
-			currentMode = '进入全屏';
-			fullscreen.innerHTML = '全屏模式';
-		}
-		alert(`${currentMode}失败，请重新尝试`);
 	}, false);
 }, false);
 
-//功能2：手指模式
+//手指模式
 window.addEventListener('load', function () {
 	var currentFingerMode = document.querySelector('span.currentFingerMode');
 	var toggleFingerMode = document.querySelector('span.toggleFingerMode');
@@ -75,13 +62,37 @@ window.addEventListener('load', function () {
 	}, false);
 }, false);
 
-//功能3：切换颜色
+//设置绘图区大小
+window.addEventListener('load', function () {
+	var confirm = document.querySelector('input#confirm');
+	var warning = document.querySelector('span.warning');
+	var canvas = document.querySelector('.ui-paint-area canvas');
+	var canvasWidth = document.querySelector('.canvasWidth input');
+	var canvasHeight = document.querySelector('.canvasHeight input');
+
+	confirm.addEventListener('click', function(e) {
+		var newWidth = canvasWidth.value, newHeight = canvasHeight.value;
+		if (newWidth > 0 && newHeight > 0) {
+			canvas.width = newWidth;
+			canvas.height = newHeight;
+			canvas.style.width = newWidth + 'px';
+			canvas.style.height = newHeight + 'px';
+
+			warning.style.display = 'none';
+		} else {
+			warning.style.display = 'block';
+			warning.style.color = 'red';
+		}
+	}, false)
+}, false);
+
+//设置画笔颜色
 window.addEventListener('load', function () {
 	var currentColor = document.querySelector('span.currentColor');
 	var toggleColor = document.querySelector('span.toggleColor');
 	var colorOptions = document.querySelector('div.colorOptions');
 	var colorIcon = document.querySelector('span.colorIcon');
-	var moreColor = document.querySelector('span.moreColor');
+	var moreColor = document.querySelector('span.moreColor input');
 
 	colorOptions.style.display = 'none';
 
@@ -103,8 +114,11 @@ window.addEventListener('load', function () {
 		
 	}, false);
 
-	moreColor.addEventListener('click', function (event) {
-		event.stopPropagation();
+	moreColor.addEventListener('change', function (event) {
+		var color = event.target.value;
+		currentColor.dataset.color = color;
+		setBackgroundColor('span.currentColor');
+		global.color = color;		
 	}, false);
 
 	setBackgroundColor('span.currentColor');
@@ -118,7 +132,7 @@ window.addEventListener('load', function () {
 	}
 }, false);
 
-//功能4：切换线宽
+//设置画笔规格
 window.addEventListener('load', function () {
 	var currentLineWidth = document.querySelector('span.currentLineWidth');
 	var toggleLineWidth = document.querySelector('span.toggleLineWidth');
@@ -158,7 +172,7 @@ window.addEventListener('load', function () {
 		e.stopPropagation();
 
 		var result = prompt('请输入新的规格值（正数）');
-		console.log(Number(result));
+		// console.log(Number(result));
 		if (result <= 0) {
 			alert('输入有误！！！！');
 		} else {
@@ -167,38 +181,30 @@ window.addEventListener('load', function () {
 			setLineWidth('span.currentLineWidth');
 		}
 	}, false);
-
 }, false);
 
-//功能6：设置绘图区大小
-window.addEventListener('load', function () {
-	var confirm = document.querySelector('input#confirm');
-	var warning = document.querySelector('span.warning');
-	var canvas = document.querySelector('canvas');
-	var canvasWidth = document.querySelector('input#canvasWidth');
-	var canvasHeight = document.querySelector('input#canvasHeight');
+//关闭全部功能区
+window.addEventListener('load', function (event) {
+	var closeall = document.querySelector('li[data-popup="close-all"]');
+	var settingFunctions = document.querySelectorAll('.ui-setting-function');
 
-	confirm.addEventListener('click', function(e) {
-		if (canvasWidth.value > 0 && canvasHeight.value > 0) {
-			canvas.width = canvasWidth.value;
-			canvas.height = canvasHeight.value;
-			warning.style.display = 'none';
-		} else {
-			warning.style.display = 'block';
-		}
-	}, false)
+	closeall.addEventListener('click', function (event) {
+		settingFunctions.forEach(function (Function) {
+			Function.classList.add('hidden');
+		})
+	}, false);
 }, false);
 
 //canvas绘图代码
 window.addEventListener('load', function () {
-	var clearCanvas = document.querySelector('.clearall');
+	var clearCanvas = document.querySelector('li[data-popup="clear-all"]');
+	clearCanvas.addEventListener('click', function (event) {
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
+	}, false);
+
 	var canvas = document.querySelector('.ui-paint-area canvas');
 	var ctx = canvas.getContext('2d');
 	var ongoingTouches = [];
-
-	clearCanvas.addEventListener('click', function () {
-		ctx.clearRect(0, 0, canvas.width, canvas.height);
-	}, false);
 
 	canvas.addEventListener('touchstart', startHandler, false);
 	canvas.addEventListener('touchmove', moveHandler, false);
@@ -248,6 +254,8 @@ window.addEventListener('load', function () {
 			ctx.fillStyle = global.color;
 			ctx.fill();
 		}
+
+		// console.log(touches);
 	}
 
 	function moveHandler(e) {
@@ -311,73 +319,78 @@ window.addEventListener('load', function () {
 	function copyTouch({identifier, pageX, pageY}) {
 		return {identifier, pageX, pageY}
 	}
-
 }, false);
 
 //canvas大小初始化
 window.addEventListener('load', function (event) {
 	var canvas = document.querySelector('.ui-paint-area canvas');
-	canvas.height = window.innerHeight;
-	canvas.width = canvas.parentElement.clientWidth;
+	canvas.height = canvas.clientHeight;
+	canvas.width = canvas.clientWidth;
 }, false);
 
-//三级菜单
-window.addEventListener('load', function (ecent) {
-	var optionTipList = document.querySelectorAll('.option-tip');
-
-	optionTipList.forEach(function (optionTip) {
-		optionTip.addEventListener('click', function (event) {
-			var popup = event.currentTarget.parentElement.querySelector('.popup');
-			// console.log(popup);
-			popup.classList.toggle('hidden');
-			popup.classList.toggle('showed');
-		})
-	})
-}, false);
-
-//二级菜单
+//绑定ui-setting-tip和ui-setting-area
 window.addEventListener('load', function (event) {
-	var tip = document.querySelector('.ui-setting-tip-value');
-
-	tip.addEventListener('click', function (event) {
-		var optionArea = document.querySelector('.ui-setting-option-area');
-		optionArea.classList.toggle('hidden');
-		optionArea.classList.toggle('showed');
-	})
-});
-
-window.addEventListener('scroll', function (event) {
-	var settingArea = document.querySelector('.ui-setting-area');
-
-	settingArea.style.top = event.target.scrollingElement.scrollTop + 'px';
-	settingArea.style.left = event.target.scrollingElement.scrollLeft + 'px';
-});
-
-window.visualViewport.addEventListener('resize', function (event) {
-	var settingArea = document.querySelector('.ui-setting-area');
 	var settingTip = document.querySelector('.ui-setting-tip');
-	// var settingTipValue = document.querySelector('.ui-setting-tip-value');
-
-	// console.log(event);
-
-	settingArea.style.top = event.target.offsetTop + 'px';
-	settingArea.style.left = event.target.offsetLeft + 'px';
-
-	settingTip.style.width = (28 / event.target.scale) + 'px';
-	settingTip.style.height = (28 / event.target.scale) + 'px';
-
-	settingTip.style.fontSize = (1 / event.target.scale) + 'em';
-	// settingTipValue.style.lineHeight = (80 / event.target.scale) + 'px';
-
-
-});
-
-window.visualViewport.addEventListener('scroll', function (event) {
 	var settingArea = document.querySelector('.ui-setting-area');
-	var settingTipValue = document.querySelector('.ui-setting-tip-value');
 
-	// console.log(event.target.pageLeft);
-
-	settingArea.style.top = event.target.pageTop + 'px';
-	settingArea.style.left = event.target.pageLeft + 'px';
+	settingTip.addEventListener('click', function (event) {
+		settingArea.classList.toggle('hidden');
+	}, false);
 })
+
+//绑定ui-setting-function和data-popup
+window.addEventListener('load', function (event) {
+	var settingOptions = document.querySelectorAll('.ui-setting-options li');
+	
+	settingOptions.forEach(function (option) {
+		var id = option.dataset['popup'];
+		var settingFunction = document.querySelector(`#${id}`);
+		if (settingFunction) {
+			option.addEventListener('click', function (event) {
+				settingFunction.classList.toggle('hidden');
+			}, false);
+		}
+	})
+}, false);
+
+//判断浏览器功能
+window.addEventListener('load', function (event) {
+	if (window.visualViewport) {
+		//缩放页面
+		window.visualViewport.addEventListener('resize', function (event) {
+			var paintSetting = document.querySelector('.ui-paint-setting');
+
+			// console.log(event);
+
+			paintSetting.style.top = event.target.offsetTop + 'px';
+			paintSetting.style.left = event.target.offsetLeft + 'px';
+
+			paintSetting.style.width = (28 / event.target.scale) + 'px';
+			paintSetting.style.height = (28 / event.target.scale) + 'px';
+
+			paintSetting.style.fontSize = (1 / event.target.scale) + 'em';
+		}, false);
+
+		//滚动页面
+		window.visualViewport.addEventListener('scroll', function (event) {
+			var paintSetting = document.querySelector('.ui-paint-setting');
+
+			paintSetting.style.top = event.target.pageTop + 'px';
+			paintSetting.style.left = event.target.pageLeft + 'px';
+		}, false);	
+	} else {
+		//不能缩放页面时，绑定初始scroll事件
+		window.addEventListener('scroll', function (event) {
+			var paintSetting = document.querySelector('.ui-paint-setting');
+
+			// console.log(paintSetting);
+
+			paintSetting.style.top = event.target.scrollingElement.scrollTop + 'px';
+			paintSetting.style.left = event.target.scrollingElement.scrollLeft + 'px';
+		}, false);
+
+		var fingerModeNone = document.querySelector('input[id="none"]');
+		fingerModeNone.disabled = true;
+		alert('由于您的浏览器不支持某项功能，将不能进行缩放操作');
+	}	
+}, false);
