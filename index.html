@@ -1,89 +1,46 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
-<head>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-	<title>帆船之家</title>
-	<script>
-		function liuyan() {
-		var tr = document.createElement("tr")
-		var td = document.createElement("td")
-		var tbody = document.getElementById("liuyanban")
-		var content = document.getElementById("content")
-		
-		td.append(content.value)
-		tr.append(td)
-		tbody.append(tr)
+<html lang="zh-CN" dir="ltr">
 
- 		content.value = ""    
-		}
-	</script>
-	<style type="text/css">
-		     body {
-		     width: auto;
-		     }
-		     header {
-		     background: antiquewhite;
-		     }
-		     h1 {
-		        text-align: center;
-			padding: 10px;
-			font-size: 3em;
-			color: orange;
-		     }
-		     nav {
-	       	     padding-bottom: 1px;
-		     }
-		     nav ul {
-		     list-style-type: none;
-		     }
-		     nav li {
-		     font-weight: bold;
-		     }
-		     h2 span {
-		     color: darkorange;
-		     }
-		     table {
-		     width: 50%;
-		     border-top: 2px solid lightblue;
-		     border-right: 2px solid lightblue;
-		     border-left: 2px solid lightblue;
-		     }
-		     thead td {
-		     font-weight: bold
-		     }
-		     tbody td {
-		     padding: 4px 20px;
-		     border-block-end: 2px dotted black;
-		     }
-		     form {
-		     width: 50%;
-		     margin-top: 10px;
-		     }
-		     form textarea {
-		     width: 100%;
-		     overflow: auto;
-		     }
-		     
-	</style>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width initial-scale=1">
+	<link rel="icon" href="icons/favicon.ico">
+	<link rel="stylesheet" href="style/main.css">
+	<script src="script/main.js" defer></script>
+	<title>帆船之家</title>
 </head>
 
 <body>
 	<header>
-		<h1>欢迎来到帆船之家！</h1>
-		
-        <nav>
-		<ul>
-			<li>留言板</li>
-		</ul>
-	</nav>
+		<h2>欢迎来到帆船之家！</h2>
+		<nav>
+			<ul>
+				<li>
+					<a href="#">留言板</a>
+				</li>
+				<li>
+					<a href="./fetching-data/ajax.html">体验 ajax</a>
+				</li>
+				<li>
+					<a href="./castle-sky/webGame/fingerPainting/">
+						体验指尖绘图
+					</a>
+				</li>
+				<li>
+					<a href="./castle-sky/webGame/bouncing-ball/">
+						体验弹球游戏
+					</a>
+				</li>
+			</ul>
+		</nav>
 	</header>
-		
-        <article>
-		<h2>主题：<span>帆宝贝，生日快乐！</span></h2>
+
+	<article>
+		<h3>主题：<small>帆宝贝，生日快乐！</small></h3>
 		<table>
 			<thead>
 				<tr>
-					<td>留言内容</td>
+					<th>留言内容</th>
 				</tr>
 			</thead>
 			<tbody id="liuyanban">
@@ -94,13 +51,15 @@
 		</table>
 		<form action="#">
 			<fieldset>
-				<legend>留言</legend>
-				<textarea id="content"></textarea>
+				<legend>留言:</legend>
+				<textarea id="content"
+				></textarea>
 				<button onclick=liuyan();>提交</button>
 			</fieldset>
 		</form>
 	</article>
-		
-        <footer></footer>
+
+	<footer></footer>
 </body>
+
 </html>

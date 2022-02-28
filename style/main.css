@@ -1,0 +1,131 @@
+/**
+ * 全局样式
+ */
+
+*, *::after, *::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --padding-width: 1em;
+}
+
+/*
+ * 重置 a 元素的样式 
+ */
+
+a {
+  color: inherit;
+  background-color: transparent;
+
+  text-decoration: none;
+} 
+
+a:hover, a:active {
+  color: navy;
+  text-decoration: underline;
+}
+
+/*
+ * 具体业务相关的样式 
+ */
+
+/*
+ * html 和 body 元素
+ */
+html {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: clamp(1rem, 1.5vw + 0.75rem, 2rem);
+}
+
+/*
+ * header 元素及其后代元素 
+ */
+header {
+	padding: var(--padding-width);
+
+	background: antiquewhite;
+}
+
+header > h2 {
+	text-align: center;
+  margin-bottom: 0.2em;
+
+	color: orange;
+}
+
+header > nav > ul {
+  list-style: none;
+
+  display: flex;
+}
+
+header > nav > ul > li {
+	flex: 1;
+
+  text-align: center;
+}
+
+/* 
+ * article 元素及其后代元素
+ */
+article {
+  padding: var(--padding-width);
+}
+
+h3 > small {
+	color: darkorange;
+}
+
+table {
+  display: table;
+
+  margin-block-start: 1em;
+
+  inline-size: 100%;
+
+	border: 2px solid lightblue;
+}
+
+thead th {
+  font-weight: 500;
+}
+
+tbody td {
+  font-size: smaller;
+
+	padding: 4px 20px;
+
+  background-color: rgb(214, 214, 214);
+}
+
+form {
+	margin-block-start: 1em;
+}
+
+form > fieldset {
+  border: none;
+}
+
+form > fieldset > legend {
+  font-size: 0.8em;
+
+  margin-block-end: 0.5em;
+}
+
+form > fieldset > textarea {
+	inline-size: 100%;
+	min-block-size: 20vh;
+  resize: none;
+}
+
+form > fieldset > button {
+  display: block;
+  inline-size: 50%;
+  max-inline-size: 8em;
+  margin: 1em auto;
+
+  font-size: 0.6em;
+}
