@@ -1,4 +1,9 @@
-function liuyan() {
+const submit_button = document.getElementById('submit')
+submit_button.addEventListener('click', liuyan)
+
+function liuyan(e) {
+  e.preventDefault();
+
   const tr = document.createElement("tr")
   const td = document.createElement("td")
   const tbody = document.getElementById("liuyanban")
