@@ -1,0 +1,73 @@
+*, *::after, *::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: clamp(1rem, 1.5vw + 0.75rem, 2rem);
+  font-family: 'Times New Roman', Times, serif;
+}
+
+html, body {
+  block-size: 100%;
+  inline-size: 100%;
+}
+
+body {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3em;
+
+  padding: 3em;
+}
+
+.wrapper {
+  inline-size: 200px;
+  block-size: 200px;
+
+  border: 1px solid #000000;
+
+  position: relative;
+}
+
+.wrapper::before {
+  inline-size: 100%;
+
+  position: absolute;
+  bottom: 100%;
+
+  content: '200 x 200';
+  text-align: center;
+}
+
+.text-wrap {
+  white-space: pre-wrap;
+}
+
+#one {
+  display: flex;
+
+  block-size: 100%;
+  overflow: auto;
+}
+
+#two {
+  display: flex;
+
+  block-size: 100%;
+}
+
+#two > div {
+  display: flex;
+  flex-direction: column;
+
+  inline-size: 100%;
+}
+
+#two > div > *:nth-child(2) {
+  overflow: auto;
+
+  display: flex;
+  flex-direction: column;
+}

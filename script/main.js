@@ -4,18 +4,16 @@ submit_button.addEventListener('click', liuyan)
 function liuyan(e) {
   e.preventDefault();
 
-  const tr = document.createElement("tr")
-  const td = document.createElement("td")
-  const tbody = document.getElementById("liuyanban")
+  const li = document.createElement("li")
+  const ol = document.getElementById("liuyanban")
   const content = document.getElementById("content").value
 
   if (content === '') {
     return;
   }
 
-  td.append(content)
-  tr.append(td)
-  tbody.append(tr)
+  li.append(content)
+  ol.append(li)
 
   content.value = ""
 }

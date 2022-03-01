@@ -11,55 +11,58 @@
 </head>
 
 <body>
-	<header>
-		<h2>欢迎来到帆船之家！</h2>
-		<nav>
-			<ul>
-				<li>
-					<a href="#">留言板</a>
-				</li>
-				<li>
-					<a href="./fetching-data/ajax.html">体验 ajax</a>
-				</li>
-				<li>
-					<a href="./castle-sky/webGame/fingerPainting/">
-						体验指尖绘图
-					</a>
-				</li>
-				<li>
-					<a href="./castle-sky/webGame/bouncing-ball/">
-						体验弹球游戏
-					</a>
-				</li>
-			</ul>
-		</nav>
-	</header>
+	<section class="flex-column h-100">
+		<header>
+			<h2>欢迎来到帆船之家！</h2>
+			<nav>
+				<ul>
+					<li>
+						<a href="#">留言板</a>
+					</li>
+					<li>
+						<a href="./fetching-data/ajax.html">体验 ajax</a>
+					</li>
+					<li>
+						<a href="./castle-sky/webGame/fingerPainting/">
+							体验指尖绘图
+						</a>
+					</li>
+					<li>
+						<a href="./castle-sky/webGame/bouncing-ball/">
+							体验弹球游戏
+						</a>
+					</li>
+					<li>
+						<a href="./css-layout/">
+							CSS 布局概览
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</header>
 
-	<article>
-		<h3>主题：<small>帆宝贝，生日快乐！</small></h3>
-		<table>
-			<thead>
-				<tr>
-					<th>留言内容</th>
-				</tr>
-			</thead>
-			<tbody id="liuyanban">
-				<tr>
-					<td>生日快乐！</td>
-				</tr>
-			</tbody>
-		</table>
-		<form action="#">
-			<fieldset>
-				<legend>留言:</legend>
-				<textarea id="content"
-				></textarea>
-				<button id="submit">提交</button>
-			</fieldset>
-		</form>
-	</article>
+		<article>
+			<h3>主题：<small>帆宝贝，生日快乐！</small></h3>
+			<section>
+				<h4>留言内容</h4>
+				<ol id="liuyanban">
+					<li>生日快乐！</li>
+				</ol>
+			</section>
+			<form action="#">
+				<fieldset>
+					<legend>留言:</legend>
+					<textarea id="content"
+					></textarea>
+					<button id="submit">提交</button>
+				</fieldset>
+			</form>
+		</article>
 
-	<footer></footer>
+		<footer class="text-center">
+			copyright reserved, 2021-2022.
+		</footer>
+	</section>
 </body>
 
 </html>
