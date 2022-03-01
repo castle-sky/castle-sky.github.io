@@ -40,6 +40,10 @@ html {
   font-size: clamp(1rem, 1.5vw + 0.75rem, 2rem);
 }
 
+html, body {
+  height: 100%;
+}
+
 /*
  * header 元素及其后代元素 
  */
@@ -68,41 +72,58 @@ header > nav > ul > li {
   text-align: center;
 }
 
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  inline-size: 100%;
+}
+
+.h-100 {
+  block-size: 100%;
+}
+
+.text-center {
+  text-align: center;
+}
+
 /* 
  * article 元素及其后代元素
  */
 article {
+  overflow: auto;
+
+  inline-size: 100%;
+  block-size: 100%;
   padding: var(--padding-width);
+
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--padding-width);
 }
 
 h3 > small {
 	color: darkorange;
 }
 
-table {
-  display: table;
+article > section {
+  overflow: auto;
+  border: 2px solid lightblue;
 
-  margin-block-start: 1em;
-
-  inline-size: 100%;
-
-	border: 2px solid lightblue;
+  margin-block-end: auto;
+  padding: var(--padding-width);
 }
 
-thead th {
-  font-weight: 500;
-}
-
-tbody td {
+article > section > ol > li {
   font-size: smaller;
 
 	padding: 4px 20px;
 
   background-color: rgb(214, 214, 214);
-}
-
-form {
-	margin-block-start: 1em;
+  margin-block-end: 2px;
 }
 
 form > fieldset {
