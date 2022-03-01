@@ -6,13 +6,14 @@ function liuyan(e) {
 
   const li = document.createElement("li")
   const ol = document.getElementById("liuyanban")
-  const content = document.getElementById("content").value
+  const content = document.getElementById("content")
+  const value = content.value
 
-  if (content === '') {
+  if (value === '') {
     return;
   }
 
-  li.append(content)
+  li.append(value)
   ol.append(li)
 
   content.value = ""
