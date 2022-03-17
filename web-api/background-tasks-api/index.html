@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>background tasks api</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1">
+    <script src="./main.js" defer></script>
+  </head>
+  <body>
+    <main id="page">
+      <article class="article">
+        <p>
+          使用<code>requestIdleCallback()</code>执行协作式的、受调度的后台任务的示例
+        </p>
+        <div id="container">
+          <div class="label">
+            解码 quantum filament tachyon 任务……
+          </div>
+          <progress id="progress" value="0"></progress>
+          <button class="button" id="startButton">start</button>
+          <div class="label counter">
+            任务 <span id="currentTaskNumber">0</span> 总计 <span id="totalTaskCount">0</span>
+          </div>
+          <div id="logBox">
+            <div class="logHeader">日志</div>
+            <div id="log" style="max-height: 10em; overflow: auto; scroll-behavior: smooth;"></div>
+          </div>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>
