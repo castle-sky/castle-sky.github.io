@@ -64,6 +64,7 @@ header > nav > ul {
   list-style: none;
 
   display: flex;
+  flex-wrap: wrap;
 }
 
 header > nav > ul > li {

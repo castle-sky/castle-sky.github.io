@@ -1,3 +1,5 @@
+@charset 'utf-8';
+
 *, *::after, *::before {
   box-sizing: border-box;
   padding: 0;
@@ -7,6 +9,8 @@
 html {
   font-size: clamp(1rem, 1.5vw + 0.75rem, 2rem);
   font-family: 'Times New Roman', Times, serif;
+
+  counter-reset: count;
 }
 
 html, body {
@@ -26,7 +30,7 @@ body {
   inline-size: 200px;
   block-size: 200px;
 
-  border: 1px solid #000000;
+  outline: black solid 1px;
 
   position: relative;
 }
@@ -37,7 +41,8 @@ body {
   position: absolute;
   bottom: 100%;
 
-  content: '200 x 200';
+  counter-increment: count;
+  content: counter(count) ': 200 x 200';
   text-align: center;
 }
 
@@ -70,4 +75,127 @@ body {
 
   display: flex;
   flex-direction: column;
+}
+
+#three {
+  display: flex;
+}
+
+#three > * {
+  flex: 0 0 auto;
+}
+
+#four {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: minmax(10px, 1fr) minmax(20px, 2fr) minmax(10px, 1fr);
+}
+
+ul#five{
+  inline-size: 100%;
+  block-size: 100%;
+  overflow: auto;
+  list-style: none;
+  padding: revert;
+}
+
+#five ul {
+  overflow: hidden;
+  list-style: none;
+  padding: revert;
+}
+
+#five .closed ul {
+  height: 0;
+}
+
+#five li {
+  position: relative;
+  cursor: pointer;
+}
+
+#five li::before {
+  content: '\1f647';
+  position: absolute;
+  top: 0;
+  left: -36px;
+}
+
+#five li.submenu::after {
+  content: '>';
+  position: absolute;
+  top: 0;
+  right: 0;
+  transition: transform 0.2s ease;
+  transform: rotate(-90deg);
+}
+
+#five li.closed.submenu::after {
+  transform: rotate(90deg);
+}
+
+#six > .h-100 {
+  height: 100%;
+}
+
+#six > .h-100::before {
+  content: '1';
+}
+
+#seven {
+  position: relative;
+
+  display: flex;
+
+  inline-size: 40px;
+  block-size: 40px;
+  overflow: hidden;
+}
+
+#seven > .brick {
+  flex: 0 0 auto;
+
+  inline-size: 40px;
+  block-size: 40px;
+
+  transition: order 1s ease, margin-left 1s ease;
+}
+
+#seven > .left {
+  margin-left: -40px;
+}
+
+#seven > .blue {
+  background-color: blue;
+}
+
+#seven > .green {
+  background-color: green;
+}
+
+#seven > .yellow {
+  background-color: yellow;
+}
+
+#eight .brick {
+  inline-size: 40px;
+  block-size: 40px;
+  background-color: inherit;
+  position: absolute;
+}
+
+#eight > .blue {
+  background-color: rgba(0, 0, 255, 0.1);
+  position: relative;
+}
+
+#nine img {
+  display: inline-block;
+  inline-size: 100%;
+}
+
+#nine video {
+  display: inline-block;
+  inline-size: 200px;
+  block-size: 200px;
 }

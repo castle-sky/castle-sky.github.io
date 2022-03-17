@@ -66,5 +66,222 @@
         </div>
       </div>
     </div>
+    <div class="wrapper">
+      <div id="three">
+        <div>1</div>
+        <div contenteditable="true">2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+      </div>
+      <div id="options">
+        <label>
+          flex row no wrap, flex item 0 0 auto
+          <input type="radio" name="option" value="0 0 auto">
+        </label>
+        <label>
+          flex item 1 1 0
+          <input type="radio" name="option" value="1 1 0">
+        </label>
+        <label>
+          flex item 1 1 100%
+          <input type="radio" name="option" value="1 1 100%">
+        </label>
+        <label>
+          flex item 1 1 25%
+          <input type="radio" name="option" value="1 1 25%">
+        </label>
+        <label>
+          flex item 0 0 25%
+          <input type="radio" name="option" value="0 0 25%">
+        </label>
+        <script>
+          const three = document.getElementById('three');
+
+          const options = document.getElementById('options');
+          options.addEventListener('click', (e) => {
+            let newValue;
+            const target = e.target;
+            if (target.tagName === 'INPUT') {
+              newValue = target.value;
+            } else {
+              newValue = target.getElementByTagName('input');
+            }
+            Array.from(three.children).map(child => child.style.flex = newValue);
+          })
+        </script>
+      </div>      
+    </div>
+    <div class="wrapper">
+      <div id="four">
+        <div>1</div>
+        <div contenteditable="true">2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+      </div>
+    </div>
+    <div class="wrapper">
+      <ul id="five">
+        <li>menu 1</li>
+        <li>menu 2</li>
+        <li class="submenu">munu 3
+          <ul>
+            <li>submenu 1</li>
+            <li class="submenu">submenu 2
+              <ul>
+                <li>submenu 3</li>
+                <li>submenu 4</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="height">
+          menu 4
+        </li>
+      </ul>
+      <script>
+        const five = document.getElementById('five');
+        five.addEventListener('click', (e) => {
+          console.log(e);
+          const target = e.target;
+          target.classList.toggle('closed')
+        })
+      </script>
+    </div>
+    <div class="wrapper">
+      <div id="six">
+        <div class="h-100">
+          height 100%
+        </div>
+      </div>
+    </div>
+    <div class="wrapper">
+      <div id="seven">
+        <div class="brick blue"></div>
+        <div class="brick green"></div>
+        <div class="brick yellow"></div>
+      </div>
+      <script>
+        (function () {
+          console.log('start execute');
+          let max_index = 0;
+          let status = false;
+
+          const seven = document.getElementById('seven');
+          seven.addEventListener('click', (e) => {
+            if (status) {
+              return;
+            }
+            status = !status;
+            max_index += 1;
+
+            const target = e.target;
+            let next;
+            if (target.nextElementSibling) {
+              next = target.nextElementSibling;
+            } else {
+              next = target.parentElement.firstElementChild;
+            }
+            next.style.display = 'unset';
+            target.classList.toggle('left');
+            
+            setTimeout(() => {                          
+              target.style.order = max_index;
+              target.style.display = 'none';
+              target.classList.toggle('left');
+              status = !status;
+            }, 1000);
+          })
+        })();
+      </script>
+    </div>
+    <div class="wrapper">
+      <div id="eight">
+        <div class="blue">
+          <div class="brick"></div>
+          <div class="brick"></div>
+          <div class="brick"></div>
+          <div class="brick"></div>
+        </div>
+      </div>
+    </div>
+    <div class="wrapper">
+      <div id="nine">
+        <figure>
+          <img 
+            src="./images/boat.jpg" 
+            alt="a beautiful boat" 
+            />
+          <figcaption>a beautiful boat there</figcaption>
+        </figure>
+        <figure>
+          <video id="my-video">
+            <source src="./multimedia/bird.mp4" type="video/mp4" />
+            <p>你的浏览器不支持网页视频，请访问<a href="./multimedia/bird.mp4">视频的链接</a></p>
+          </video>
+            <div class="control">
+              <div id="play">play/pause</div>
+              <div id="forward">3 X</div>
+              <div id="back">0.5 X</div>
+              <div id="stop">stop</div>
+              <div id="resume">resume</div>
+              <div id="up">volumn up</div>
+              <div id="down">volumn down</div>
+            </div>
+        </figure>
+      </div>
+      <script>
+        (function () {
+          class Video {
+            state = 'pause';
+            constructor(element) {
+              this.element = element;
+            }
+
+            play() {
+              this.reset();
+              if (this.state === 'play') {
+                this.element.pause();
+                this.state = 'pause';
+                return;
+              }
+              this.state = 'play';
+              this.element.play();
+            }
+
+            reset() {
+              this.element.playbackRate = 1;
+            }
+
+            forward() {
+              this.element.playbackRate = 3;
+            }
+
+            back() {
+              this.element.playbackRate = 0.5;
+            }
+
+            
+          }
+
+          const video = document.querySelector('#my-video');
+          const play = document.querySelector('#play');
+          const forward = document.querySelector('#forward');
+          const back = document.querySelector('#back');
+
+          const videoControl = new Video(video);
+          play.addEventListener('click', () => {
+            videoControl.play();
+          });
+          forward.addEventListener('click', () => {
+            videoControl.forward();
+          });
+          back.addEventListener('click', () => {
+            videoControl.back();
+          })
+        })();
+      </script>
+    </div>
   </body>
 </html>
